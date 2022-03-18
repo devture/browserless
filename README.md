@@ -143,3 +143,9 @@ $pdfBytes = $client->createPdfFromHtmlRequestUsingFileProtocol($pdfCreationReque
 $client->deleteWorkspaceFile($workspaceFileLogo);
 $client->deleteWorkspaceFile($workspaceFileStyles);
 ```
+
+## Alternatives
+
+- the [SynergiTech/chrome-pdf-php](https://github.com/SynergiTech/chrome-pdf-php) library can also render PDFs via Browserless
+
+- [wkhtmltopdf](https://wkhtmltopdf.org/) invoked via [knplabs/knp-snappy](https://github.com/KnpLabs/snappy)
