@@ -81,6 +81,15 @@ class PdfCreationRequest {
 			$result['options']['footerTemplate'] = '<span></span>';
 		}
 
+		// Specifying an empty headerTemplate ('') is a nice way to prevent the default one from being used.
+		// The default one renders the date on the left side.
+		// When an empty footerTemplate is specified, Browserless errors out with:
+		// > options.footerTemplate is not allowed to be empty" error
+		// This is a workaround for that.
+		if (array_key_exists('headerTemplate', $result['options']) && in_array($result['options']['headerTemplate'], [null, ''], true)) {
+			$result['options']['headerTemplate'] = '<span></span>';
+		}
+
 		return $result;
 	}
 
