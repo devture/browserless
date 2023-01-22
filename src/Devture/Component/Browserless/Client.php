@@ -139,14 +139,8 @@ class Client {
 	}
 
 	private function sendRequest(RequestInterface $request): ResponseInterface {
-		return $this->sendRequestAsync($request)->wait();
-	}
-
-	private function sendRequestAsync(RequestInterface $request): PromiseInterface {
 		try {
-			return $this->guzzleClient->sendAsync($request, [
-				'timeout' => $this->timeoutSeconds,
-			]);
+			return $this->sendRequestAsync($request)->wait();
 		} catch (\GuzzleHttp\Exception\ClientException $e) {
 			$response = $e->getResponse();
 
@@ -158,6 +152,12 @@ class Client {
 		} catch (\GuzzleHttp\Exception\TransferException $e) {
 			throw new Exception($e->getMessage(), 0, $e);
 		}
+	}
+
+	private function sendRequestAsync(RequestInterface $request): PromiseInterface {
+		return $this->guzzleClient->sendAsync($request, [
+			'timeout' => $this->timeoutSeconds,
+		]);
 	}
 
 }
