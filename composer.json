@@ -11,7 +11,8 @@
 	],
 	"require": {
 		"php": ">=8.0",
-		"guzzlehttp/guzzle": ">=6.3,<8.0"
+		"guzzlehttp/guzzle": ">=6.3,<8.0",
+		"ramsey/uuid": "<5.0-dev"
 	},
 	"autoload": {
 		"psr-0": {
