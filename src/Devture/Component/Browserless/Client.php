@@ -64,7 +64,7 @@ class Client {
 	}
 
 	public function createWorkspaceFile(string $bytes, string $fileExtension): Model\WorkspaceFile {
-		$fileName = sprintf('%s.%s', \Ramsey\Uuid\Uuid::uuid4()->toString(), $fileExtension);
+		$fileName = sprintf('%s.%s', \Symfony\Component\Uid\Uuid::v4()->toRfc4122(), $fileExtension);
 
 		$request = new \GuzzleHttp\Psr7\Request('POST', $this->createUrl('/workspace'));
 		$request = $request->withBody(new \GuzzleHttp\Psr7\MultipartStream([
